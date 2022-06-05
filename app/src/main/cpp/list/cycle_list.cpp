@@ -1,20 +1,20 @@
 
 
-#include"cycle_list.h"
+#include "cycle_list.h"
 
 namespace pu {
 
 std::string CycleList::HasCycle() {
-  ListNode * p_head=GetCycleList();
-  if (!p_head){
+  ListNode *p_head = GetCycleList();
+  if (!p_head) {
     return nullptr;
   }
-  ListNode * p1=p_head;
-  ListNode* p2=p_head;
-  while (p2 && p2->next){
-    p2=p2->next->next;
-    p1=p1->next;
-    if (p1==p2){
+  ListNode *p1 = p_head;
+  ListNode *p2 = p_head;
+  while (p2 && p2->next) {
+    p2 = p2->next->next;
+    p1 = p1->next;
+    if (p1 == p2) {
       return "true";
     }
   }
@@ -22,28 +22,46 @@ std::string CycleList::HasCycle() {
 }
 
 std::string CycleList::EntryNodeOfLoop() {
-  ListNode * head=GetCycleList();
-  if (!head){
+  ListNode *head = GetCycleList();
+  if (!head) {
     return "nullptr";
   }
-  ListNode* fast_p=head;
-  ListNode* slow_p=head;
-  while (fast_p && fast_p->next){
-    fast_p=fast_p->next->next;
-    slow_p=slow_p->next;
-    if (slow_p == fast_p){
+  ListNode *fast_p = head;
+  ListNode *slow_p = head;
+  while (fast_p && fast_p->next) {
+    fast_p = fast_p->next->next;
+    slow_p = slow_p->next;
+    if (slow_p == fast_p) {
       break;
     }
   }
-  if (!fast_p || !fast_p->next){
+  if (!fast_p || !fast_p->next) {
     return "nullptr";
   }
-  fast_p=head;
-  while (fast_p !=slow_p){
-    fast_p=fast_p->next;
-    slow_p=slow_p->next;
+  fast_p = head;
+  while (fast_p != slow_p) {
+    fast_p = fast_p->next;
+    slow_p = slow_p->next;
   }
-  return "std::to_string(fast_p->val)";
+
+  return std::to_string(fast_p->val);
+}
+
+std::string CycleList::FindKthToTail(int k) {
+  ListNode *head = GetLinkedList1();
+  ListNode *rang = head;
+  ListNode *new_head = head;
+  for (int i = 0; i < k; ++i) {
+    if (!rang) {
+      return "error!";
+    }
+    rang = rang->next;
+  }
+  while (rang) {
+    new_head = new_head->next;
+    rang = rang->next;
+  }
+  return std::to_string(new_head->val);
 }
 
 } // namespace pu

@@ -11,6 +11,7 @@ class CycleList : public BaseList{
   CycleList()=default;
   std::string HasCycle();
   std::string EntryNodeOfLoop();
+  std::string FindKthToTail(int k);
 };
 
 } // namespace pu

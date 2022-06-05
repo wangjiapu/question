@@ -47,7 +47,8 @@ std::string CMain::SortRun() {
 
 std::string CMain::CycleRun() {
   CycleList cycle;
-  return  cycle.EntryNodeOfLoop();;
+ // return  cycle.EntryNodeOfLoop();
+  return cycle.FindKthToTail(2);
 }
 
 
