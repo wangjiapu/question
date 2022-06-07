@@ -11,9 +11,8 @@ public:
   ListNode* GetLinkedList1();
   ListNode* GetLinkedList2();
   ListNode* GetCycleList();
-
-
-protected:
+  ListNode* GetNumber1();
+  ListNode* GetNumber2();
   std::string ListToString(ListNode *node);
 };
 

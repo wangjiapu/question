@@ -1,16 +1,17 @@
 
 #include "c_main.h"
 #include "common/p_log.h"
+#include "list/add_list.h"
+#include "list/cycle_list.h"
 #include "list/merge_list.h"
 #include "list/reverse_list.h"
 #include "list/sort_list.h"
-#include "list/cycle_list.h"
 
 namespace pu {
 
 std::string CMain::Run() {
   PLOGD("list", "start!");
-  int sw = 3;
+  int sw = 4;
   switch (sw) {
   case 0: {
     return ReverseRun();
@@ -23,6 +24,9 @@ std::string CMain::Run() {
   }
   case 3: {
     return CycleRun();
+  }
+  case 4: {
+    return AddRun();
   }
   }
   return "pppp";
@@ -47,9 +51,14 @@ std::string CMain::SortRun() {
 
 std::string CMain::CycleRun() {
   CycleList cycle;
- // return  cycle.EntryNodeOfLoop();
+  // return  cycle.EntryNodeOfLoop();
   return cycle.FindKthToTail(2);
 }
 
+std::string CMain::AddRun() {
+  AddList addList;
+  auto list = addList.addTwoNumbers(addList.GetNumber1(), addList.GetNumber2());
+  return addList.ListToString(list);
+}
 
 } // namespace pu

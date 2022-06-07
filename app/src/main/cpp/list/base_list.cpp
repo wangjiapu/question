@@ -68,4 +68,22 @@ ListNode *BaseList::GetCycleList() {
   return list_node0;
 }
 
+ListNode *BaseList::GetNumber1() {
+  auto *list_node0 = new ListNode(2);
+  auto *listNode1 = new ListNode(4);
+  auto *listNode2 = new ListNode(3);
+  list_node0->next = listNode1;
+  listNode1->next = listNode2;
+  return list_node0;
+}
+
+ListNode *BaseList::GetNumber2() {
+  auto *list_node0 = new ListNode(5);
+  auto *listNode1 = new ListNode(6);
+  auto *listNode2 = new ListNode(4);
+  list_node0->next = listNode1;
+  listNode1->next = listNode2;
+  return list_node0;
+}
+
 } // namespace pu

@@ -14,5 +14,6 @@ class CMain{
   std::string SortRun();
   std::string CycleRun();
 
+  std::string AddRun();
 };
 }
