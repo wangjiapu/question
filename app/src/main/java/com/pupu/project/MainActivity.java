@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.pupu.project.solutions.SubString;
 import com.pupu.question.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String javaMain() {
-        return "java result";
+        SubString subString=new SubString();
+        return subString.lengthOfLongestSubstring("abba")+"";
     }
 
     public native String cMain();
