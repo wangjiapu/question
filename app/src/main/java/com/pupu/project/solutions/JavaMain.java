@@ -7,6 +7,6 @@ public class JavaMain {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(new LongestPalindrome().isPalindrome(-121));
+        System.out.println(new Convert().convert("PAYPALISHIRING",3));
     }
 }
