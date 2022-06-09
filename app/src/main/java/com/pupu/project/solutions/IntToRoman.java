@@ -1,5 +1,8 @@
 package com.pupu.project.solutions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class IntToRoman {
 
     public String intToRoman(int num) {
@@ -18,5 +21,31 @@ public class IntToRoman {
             }
         }
         return sb.toString();
+    }
+
+    public int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>(7);
+        map.put('M', 1000);
+        map.put('D', 500);
+        map.put('C', 100);
+        map.put('L', 50);
+        map.put('X', 10);
+        map.put('V', 5);
+        map.put('I', 1);
+
+        char[] chars = s.toCharArray();
+        int value = 0;
+        int preValue = map.get(chars[0]);
+        for (int i = 1; i < chars.length; i++) {
+            int num = map.get(chars[i]);
+            if (num > preValue) {
+                value -= preValue;
+            } else {
+                value += preValue;
+            }
+            preValue = num;
+        }
+        value += preValue;
+        return value;
     }
 }
