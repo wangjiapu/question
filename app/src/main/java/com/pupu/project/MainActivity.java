@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.pupu.project.solutions.JavaMain;
-import com.pupu.project.solutions.SubString;
 import com.pupu.question.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
