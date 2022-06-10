@@ -13,10 +13,11 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class TopKFrequent {
-    public List<Integer> topKFrequent(int[] nums, int k) {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public int[] topKFrequent(int[] nums, int k) {
         // 使用字典，统计每个元素出现的次数，元素为键，元素出现的次数为值
-        HashMap<Integer,Integer> map = new HashMap();
-        for(int num : nums){
+        HashMap<Integer, Integer> map = new HashMap();
+        for (int num : nums) {
             if (map.containsKey(num)) {
                 map.put(num, map.get(num) + 1);
             } else {
@@ -39,9 +40,9 @@ public class TopKFrequent {
             }
         }
         // 取出最小堆中的元素
-        List<Integer> res = new ArrayList<>();
-        while (!pq.isEmpty()) {
-            res.add(pq.remove());
+        int[] res = new int[k];
+        for (k=k-1; k >= 0; k--) {
+            res[k] = pq.remove();
         }
         return res;
     }
