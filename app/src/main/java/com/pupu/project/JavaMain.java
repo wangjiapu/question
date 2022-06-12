@@ -1,5 +1,6 @@
 package com.pupu.project;
 
+import com.pupu.project.search.BinarySearch;
 import com.pupu.project.solutions.IntToRoman;
 import com.pupu.project.sort.HeapSort;
 import com.pupu.project.sort.QuicklySort;
@@ -18,9 +19,10 @@ public class JavaMain {
     public static void main(String[] args) {
         int[] list = {1, 8, 6, 2, 5, 4, 8, 3, 7};
         int[] test = {9,1,7,10,4,6,5,6,3};
-        int[] test2 = {3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6};
+        int[] test2 = {1,2,3,4,5,6,7,8};
+        int[] test3 = {3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6};
        // System.out.println(Arrays.toString(test));
-        System.out.println(new FindKthLargest().findKthLargest(test2,5));
+        System.out.println(new BinarySearch().search(test2,5));
     }
 
     public static String listToString(int[] list) {
