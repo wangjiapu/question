@@ -34,19 +34,20 @@ public class Traversal {
     private void inorder1(TreeNode node, List<Integer> list) {
         Stack<TreeNode> stack = new Stack<>();
         while (node != null || !stack.isEmpty()) {
-            if (node!=null){
+            if (node != null) {
                 stack.push(node);
-                node=node.left;
-            }else {
-                node=stack.pop();
+                node = node.left;
+            } else {
+                node = stack.pop();
                 list.add(node.val);
-                node=node.right;
+                node = node.right;
             }
         }
     }
 
     /**
      * 先序遍历
+     *
      * @param node
      * @param list
      */
@@ -75,28 +76,29 @@ public class Traversal {
 
     /**
      * 后序遍历
+     *
      * @param root
      * @param list
      */
-    private void end(TreeNode root,List<Integer> list){
-        if (root==null){
+    private void end(TreeNode root, List<Integer> list) {
+        if (root == null) {
             return;
         }
-        end(root.left,list);
-        end(root.right,list);
+        end(root.left, list);
+        end(root.right, list);
         list.add(root.val);
     }
 
-    private void end1(TreeNode node,List<Integer> list){
-        Stack<TreeNode> stack=new Stack<>();
-        while (node!=null || !stack.isEmpty()){
-            if (node!=null){
+    private void end1(TreeNode node, List<Integer> list) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
                 list.add(node.val);
                 stack.push(node);
-                node=node.right;
-            }else {
-                node=stack.pop();
-                node=node.left;
+                node = node.right;
+            } else {
+                node = stack.pop();
+                node = node.left;
             }
         }
         Collections.reverse(list);
@@ -105,6 +107,7 @@ public class Traversal {
 
     /**
      * 层次遍历
+     *
      * @param node
      * @return
      */
@@ -125,6 +128,37 @@ public class Traversal {
 
         }
 
+        return result;
+    }
+
+    /**
+     * 层次遍历
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int levelSize = queue.size();
+            for (int i = 1; i <= levelSize; i++) {
+                TreeNode t = queue.poll();
+                level.add(t.val);
+                if (t.left != null) {
+                    queue.offer(t.left);
+                }
+                if (t.right != null) {
+                    queue.offer(t.right);
+                }
+            }
+            result.add(level);
+        }
         return result;
     }
 }
