@@ -1,10 +1,15 @@
 package com.pupu.project;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.pupu.project.search.BinarySearch;
 import com.pupu.project.solutions.IntToRoman;
 import com.pupu.project.sort.HeapSort;
 import com.pupu.project.sort.QuicklySort;
 import com.pupu.project.topk.FindKthLargest;
+import com.pupu.project.topk.SubarraySum;
 import com.pupu.project.topk.TopKFrequent;
 import com.pupu.project.tree.Traversal;
 import com.pupu.project.tree.TreeNode;
@@ -22,11 +27,12 @@ public class JavaMain {
      *
      * @param args
      */
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static void main(String[] args) {
         // System.out.println(Arrays.toString(test));
         // System.out.println(new BinarySearch().search(initList(),5));
-        String result = listToString(new Traversal().inorderTraversal(initBinaryTree()));
-        System.out.println(result);
+        //String result = listToString(new Traversal().inorderTraversal(initBinaryTree()));
+        System.out.println(new SubarraySum().subarraySum1(initList(),2));
     }
 
     public static String listToString(List<Integer> list) {
@@ -76,6 +82,7 @@ public class JavaMain {
         //return new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
         //return new int[]{9,1,7,10,4,6,5,6,3};
         //return new int[]{1,2,3,4,5,6,7,8};
-        return new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6};
+        //return new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6};
+        return new int[]{1,1,1};
     }
 }
