@@ -51,11 +51,36 @@ public class BinarySearch {
      * @return
      */
     public int[] searchRange(int[] nums, int target) {
-        return new int[]{leftBound(nums, target), rightBound(nums, target)};
+        return new int[]{leftBound2(nums, target), rightBound(nums, target)};
+    }
+
+    /**
+     * 35. 搜索插入位置
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int searchInsert(int[] nums, int target) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = left + (right - left >> 2);
+            if (nums[mid] >= target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+        return left;
     }
 
     /**
      * 二分查找target的left边界
+     *
      * @param nums
      * @param target
      * @return
@@ -78,7 +103,37 @@ public class BinarySearch {
     }
 
     /**
+     * 使用左闭右开的方式
+     *
+     * @param nums
+     * @param target
+     * @return 可以表示：1、小于target的数组有几个；
+     */
+    private int leftBound2(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = left + (right - left >> 1);
+            if (nums[mid] > target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] == target) {
+                right = mid;
+            }
+        }
+        if (left == nums.length || nums[left] != target) {
+            return -1;
+        }
+        return left;
+    }
+
+    /**
      * 二分查找target的right边界
+     *
      * @param nums
      * @param target
      * @return
@@ -89,7 +144,7 @@ public class BinarySearch {
         while (left <= right) {
             int mid = left + (right - left >> 1);
             if (nums[mid] > target) {
-                right = mid -1;
+                right = mid - 1;
             } else if (nums[mid] <= target) {
                 left = mid + 1;
             }
