@@ -10,6 +10,14 @@ import java.util.Objects;
 
 public class MinWindow {
 
+
+    /**
+     * 76. 最小覆盖子串
+     *
+     * @param s
+     * @param t
+     * @return
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String minWindow1(String s, String t) {
         Map<Character, Integer> window = new HashMap<>();
@@ -48,12 +56,57 @@ public class MinWindow {
                     if (Objects.equals(window.get(d), need.get(d))) {
                         count--;
                     }
-                    window.put(d,window.get(d)-1);
+                    window.put(d, window.get(d) - 1);
                 }
 
             }
 
         }
-        return len == Integer.MAX_VALUE ? "" : s.substring(start, start+len);
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
+
+    /**
+     * 567. 字符串的排列
+     *
+     * @param s1
+     * @param s2
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public boolean checkInclusion(String s1, String s2) {
+        Map<Character, Integer> window = new HashMap<>();
+        Map<Character, Integer> target = new HashMap<>();
+        for (char c : s1.toCharArray()) {
+            target.put(c, target.getOrDefault(c, 0) + 1);
+        }
+
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        while (right < s2.length()) {
+            char c = s2.charAt(right);
+            right++;
+            if (target.containsKey(c)) {
+                window.put(c, window.getOrDefault(c, 0) + 1);
+                if (Objects.equals(window.get(c), target.get(c))) {
+                    count++;
+                }
+            }
+            while (right - left >= s1.length()) {
+                if (count == target.size()) {
+                    return true;
+                }
+                char d = s2.charAt(left);
+                left++;
+                if (target.containsKey(d)) {
+                    if (Objects.equals(window.get(d), target.get(d))) {
+                        count--;
+                    }
+                    window.put(d, window.get(d) - 1);
+                }
+            }
+        }
+        return false;
+    }
+
 }
