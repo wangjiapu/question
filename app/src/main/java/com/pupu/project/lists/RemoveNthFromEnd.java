@@ -19,4 +19,19 @@ public class RemoveNthFromEnd {
 
         return dummyNode.next;
     }
+
+    /**
+     * 876. 链表的中间结点
+     * @param head
+     * @return
+     */
+    ListNode middleNode(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
 }
