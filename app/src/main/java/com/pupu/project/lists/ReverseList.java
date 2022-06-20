@@ -19,6 +19,7 @@ public class ReverseList {
 
     /**
      * 剑指 Offer II 024. 反转链表 递归实现
+     *
      * @param head
      * @return
      */
@@ -30,5 +31,41 @@ public class ReverseList {
         head.next.next = head;
         head.next = null;
         return last;
+    }
+
+    ListNode suffix = null;
+
+    /**
+     * 翻转链表前n个节点
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    ListNode reverseN(ListNode head, int n) {
+        if (n == 1) {
+            suffix = head.next;
+            return head;
+        }
+        ListNode last = reverseN(head.next, n - 1);
+        head.next.next = head;
+        head.next = suffix;
+        return last;
+    }
+
+    /**
+     * 翻转链表[m,n]的区间
+     *
+     * @param head
+     * @param m
+     * @param n
+     * @return
+     */
+    ListNode reverseBetween(ListNode head, int m, int n) {
+        if (m == 1) {
+            return reverseN(head, n);
+        }
+        head.next = reverseBetween(head.next, m - 1, n - 1);
+        return head;
     }
 }
