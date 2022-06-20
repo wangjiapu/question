@@ -1,5 +1,7 @@
 package com.pupu.project.lists;
 
+import android.media.tv.TvView;
+
 import com.pupu.project.lists.ListNode;
 
 public class RemoveNthFromEnd {
@@ -22,6 +24,7 @@ public class RemoveNthFromEnd {
 
     /**
      * 876. 链表的中间结点
+     *
      * @param head
      * @return
      */
@@ -33,5 +36,21 @@ public class RemoveNthFromEnd {
             slow = slow.next;
         }
         return slow;
+    }
+
+    /**
+     * 160. 相交链表
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode p1 = headA;
+        ListNode p2 = headB;
+        while (p1 != p2) {
+            p1 = p1 == null ? headB : p1.next;
+            p2 = p2 == null ? headA : p2.next;
+        }
+        return p1;
     }
 }
