@@ -68,4 +68,40 @@ public class ReverseList {
         head.next = reverseBetween(head.next, m - 1, n - 1);
         return head;
     }
+
+    /**
+     * 25. K 个一组翻转链表
+     * @param p1
+     * @param p2
+     * @return
+     */
+    ListNode reverseRange(ListNode p1, ListNode p2) {
+        ListNode pre = null;
+        ListNode cur = p1;
+        ListNode next = null;
+        while (cur != p2) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
+    ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+        ListNode start = head;
+        ListNode end = head;
+        for (int i = 0; i < k; i++) {
+            if (end == null) {
+                return head;
+            }
+            end = end.next;
+        }
+        ListNode last = reverseRange(start, end);
+        start.next = reverseKGroup(end, k);
+        return last;
+    }
 }
