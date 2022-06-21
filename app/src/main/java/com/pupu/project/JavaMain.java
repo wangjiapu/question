@@ -42,7 +42,6 @@ public class JavaMain {
 //        new RemoveDuplicates().removeDuplicates(nums);
 //        String res = toString(nums);
 //        System.out.println(res);
-        new ThreadSolution().printNum();
     }
 
     public static String toString(int n) {
