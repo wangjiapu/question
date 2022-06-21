@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 import com.pupu.project.hard.MinWindow;
 import com.pupu.project.search.BinarySearch;
 import com.pupu.project.solutions.IntToRoman;
+import com.pupu.project.solutions.RemoveDuplicates;
 import com.pupu.project.solutions.Subsequence;
 import com.pupu.project.sort.HeapSort;
 import com.pupu.project.sort.QuicklySort;
@@ -38,7 +39,7 @@ public class JavaMain {
         // System.out.println(new BinarySearch().search(initList(),5));
         //String result = listToString(new Traversal().inorderTraversal(initBinaryTree()));
         int[] nums = initList();
-        new SortColors().sortColors2(nums);
+        new RemoveDuplicates().removeDuplicates(nums);
         String res = toString(nums);
         System.out.println(res);
     }
@@ -110,6 +111,6 @@ public class JavaMain {
         //return new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6};
         //return new int[]{1,1,1};
         //return new int[]{1, 3, 5, 6};
-        return new int[]{1};
+        return new int[]{1,1,2};
     }
 }
