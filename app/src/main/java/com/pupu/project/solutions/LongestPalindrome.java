@@ -1,5 +1,7 @@
 package com.pupu.project.solutions;
 
+import com.pupu.project.lists.ListNode;
+
 public class LongestPalindrome {
     public String longestPalindrome(String s) {
 
@@ -56,7 +58,7 @@ public class LongestPalindrome {
     }
 
     public boolean isPalindrome(int x) {
-        if (x<0){
+        if (x < 0) {
             return false;
         }
         int y = 0;
@@ -67,4 +69,68 @@ public class LongestPalindrome {
         }
         return y == s;
     }
+
+    /**
+     * 回文链表
+     * 递归写法
+     */
+    private ListNode leftNode;
+
+    public boolean isPalindrome(ListNode head) {
+
+        leftNode = head;
+        return traverse(head);
+    }
+
+    private boolean traverse(ListNode node) {
+        if (node == null) {
+            return true;
+        }
+        boolean res = traverse(node.next);
+        res = res && (leftNode.val == node.val);
+        leftNode = leftNode.next;
+        return res;
+    }
+
+    /**
+     * 非递归实现，翻转链表
+     * @param head
+     * @return
+     */
+    public boolean isPalindrome2(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        //链表为奇数，需要slow再前进一步
+        if (fast != null) {
+            slow = slow.next;
+        }
+        fast = reverse(slow);
+        slow = head;
+        while (slow != null && fast != null) {
+            if (slow.val != fast.val) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return true;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode next = null;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
 }
