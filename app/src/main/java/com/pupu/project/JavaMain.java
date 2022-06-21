@@ -12,6 +12,7 @@ import com.pupu.project.solutions.Subsequence;
 import com.pupu.project.sort.HeapSort;
 import com.pupu.project.sort.QuicklySort;
 import com.pupu.project.sort.SortColors;
+import com.pupu.project.thread.DeadSync;
 import com.pupu.project.topk.FindKthLargest;
 import com.pupu.project.topk.SubarraySum;
 import com.pupu.project.topk.TopKFrequent;
@@ -42,6 +43,7 @@ public class JavaMain {
 //        new RemoveDuplicates().removeDuplicates(nums);
 //        String res = toString(nums);
 //        System.out.println(res);
+        new DeadSync().run();
     }
 
     public static String toString(int n) {
