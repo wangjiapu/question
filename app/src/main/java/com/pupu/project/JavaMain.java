@@ -38,10 +38,11 @@ public class JavaMain {
         // System.out.println(Arrays.toString(test));
         // System.out.println(new BinarySearch().search(initList(),5));
         //String result = listToString(new Traversal().inorderTraversal(initBinaryTree()));
-        int[] nums = initList();
-        new RemoveDuplicates().removeDuplicates(nums);
-        String res = toString(nums);
-        System.out.println(res);
+//        int[] nums = initList();
+//        new RemoveDuplicates().removeDuplicates(nums);
+//        String res = toString(nums);
+//        System.out.println(res);
+        new ThreadSolution().printNum();
     }
 
     public static String toString(int n) {
