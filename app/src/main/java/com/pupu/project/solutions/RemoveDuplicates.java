@@ -46,6 +46,7 @@ public class RemoveDuplicates {
 
     /**
      * 27. 移除元素
+     *
      * @param nums
      * @param val
      * @return
@@ -58,5 +59,21 @@ public class RemoveDuplicates {
             }
         }
         return left;
+    }
+
+    /**
+     * 283. 移动零
+     * @param nums
+     */
+    public void moveZeroes(int[] nums) {
+        int left = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[left++] = nums[i];
+            }
+        }
+        for (int j = left; j < nums.length; j++) {
+            nums[j] = 0;
+        }
     }
 }
