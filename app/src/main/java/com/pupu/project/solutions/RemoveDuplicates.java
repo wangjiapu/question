@@ -22,6 +22,7 @@ public class RemoveDuplicates {
 
     /**
      * 83. 删除排序链表中的重复元素
+     *
      * @param head
      * @return
      */
@@ -41,5 +42,21 @@ public class RemoveDuplicates {
         // 断开与后面重复元素的连接
         left.next = null;
         return head;
+    }
+
+    /**
+     * 27. 移除元素
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement(int[] nums, int val) {
+        int left = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[left++] = nums[i];
+            }
+        }
+        return left;
     }
 }
