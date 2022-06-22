@@ -3,6 +3,7 @@ package com.pupu.project.solutions;
 public class ModifiedArray {
     /**
      * 370、区间加法
+     *
      * @param length
      * @param updates
      * @return
@@ -18,17 +19,40 @@ public class ModifiedArray {
 
     /**
      * 1109、航班预订统计[差分数组]
+     *
      * @param bookings
      * @param n
      * @return
      */
-    public int[] corpFlightBookings(int[][] bookings, int n){
+    public int[] corpFlightBookings(int[][] bookings, int n) {
         int[] nums = new int[n];
         Difference difference = new Difference(nums);
         for (int[] update : bookings) {
-            difference.increment(update[0]-1, update[1]-1, update[2]);
+            difference.increment(update[0] - 1, update[1] - 1, update[2]);
         }
         return difference.result();
+    }
+
+    /**
+     * 1094. 拼车[差分数组]
+     *
+     * @param trips
+     * @param capacity
+     * @return
+     */
+    public boolean carPooling(int[][] trips, int capacity) {
+        int[] nums = new int[1000];
+        Difference difference = new Difference(nums);
+        for (int[] trip : trips) {
+            difference.increment(trip[1], trip[2]-1, trip[0]);
+        }
+        int[] res = difference.result();
+        for (int i : res) {
+            if (i > capacity) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
