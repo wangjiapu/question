@@ -17,6 +17,21 @@ public class ModifiedArray {
     }
 
     /**
+     * 1109、航班预订统计[差分数组]
+     * @param bookings
+     * @param n
+     * @return
+     */
+    public int[] corpFlightBookings(int[][] bookings, int n){
+        int[] nums = new int[n];
+        Difference difference = new Difference(nums);
+        for (int[] update : bookings) {
+            difference.increment(update[0]-1, update[1]-1, update[2]);
+        }
+        return difference.result();
+    }
+
+    /**
      * 差分数组实现
      */
     class Difference {
