@@ -14,6 +14,7 @@ public class Solution {
 
     /**
      * 382. 链表随机节点
+     *
      * @return
      */
     public int getRandom() {
@@ -25,6 +26,32 @@ public class Solution {
         while (p != null) {
             if (random.nextInt(++i) == 0) {
                 res = p.val;
+            }
+            p = p.next;
+        }
+        return res;
+    }
+
+    /**
+     * 返回链表中 k 个随机节点的值
+     * @param head
+     * @param k
+     * @return
+     */
+    public int[] getRandom(ListNode head, int k) {
+        Random random = new Random();
+        int[] res = new int[k];
+        ListNode p = head;
+
+        for (int i = 0; i < k && p != null; i++) {
+            res[i] = p.val;
+            p = p.next;
+        }
+        int i = k;
+        while (p != null) {
+            int j = random.nextInt(++i);
+            if (j < k) {
+                res[j] = p.val;
             }
             p = p.next;
         }
