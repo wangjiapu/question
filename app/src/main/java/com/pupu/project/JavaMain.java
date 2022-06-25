@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.pupu.project.hard.MinWindow;
+import com.pupu.project.hard.SplitArray;
 import com.pupu.project.search.BinarySearch;
 import com.pupu.project.solutions.IntToRoman;
 import com.pupu.project.solutions.RemoveDuplicates;
@@ -43,7 +44,8 @@ public class JavaMain {
 //        new RemoveDuplicates().removeDuplicates(nums);
 //        String res = toString(nums);
 //        System.out.println(res);
-        new DeadSync().run();
+        String s=toString(new SplitArray().splitArray(initList(),2));
+        System.out.println(s);
     }
 
     public static String toString(int n) {
@@ -113,6 +115,7 @@ public class JavaMain {
         //return new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6};
         //return new int[]{1,1,1};
         //return new int[]{1, 3, 5, 6};
-        return new int[]{1,1,2};
+        //return new int[]{1,1,2};
+        return new int[]{7,2,5,10,8};
     }
 }
