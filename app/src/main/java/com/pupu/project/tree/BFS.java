@@ -1,8 +1,11 @@
 package com.pupu.project.tree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -73,6 +76,7 @@ public class BFS {
 
     /**
      * 752. 打开转盘锁
+     *
      * @param deadends
      * @param target
      * @return
@@ -131,5 +135,36 @@ public class BFS {
             chars[j] -= 1;
         }
         return new String(chars);
+    }
+
+    /**
+     * 515. 在每个树行中找最大值
+     * @param root
+     * @return
+     */
+    public List<Integer> largestValues(TreeNode root) {
+        if (root == null) {
+            return Collections.emptyList();
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                max = Math.max(node.val, max);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            res.add(max);
+            max=Integer.MIN_VALUE;
+        }
+        return res;
     }
 }
