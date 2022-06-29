@@ -27,6 +27,7 @@ public class Connect {
 
     /**
      * 114. 二叉树展开为链表
+     *
      * @param root
      */
     public void flatten(TreeNode root) {
@@ -44,5 +45,33 @@ public class Connect {
             p = p.right;
         }
         p.right = right;
+    }
+
+    /**
+     * 654. 最大二叉树
+     * @param nums
+     * @return
+     */
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        return buildTreeNode(nums, 0, nums.length-1);
+    }
+
+    public TreeNode buildTreeNode(int[] nums, int start, int end) {
+
+        if (start>end){
+            return null;
+        }
+        int index = -1;
+        int maxVal = Integer.MIN_VALUE;
+        for (int i = start; i <= end; i++) {
+            if (nums[i] > maxVal) {
+                maxVal = nums[i];
+                index = i;
+            }
+        }
+        TreeNode root = new TreeNode(maxVal);
+        root.left = buildTreeNode(nums, start, index-1);
+        root.right = buildTreeNode(nums, index + 1, end);
+        return root;
     }
 }
