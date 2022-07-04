@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ActivityMainBinding binding;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Button cBt = binding.cBt;
         Button javaBt = binding.javaBt;
-        TextView tv = binding.result;
+        tv = binding.result;
 
         cBt.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -48,4 +51,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public native String cMain();
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("pujw",tv.getHeight()+"");
+            }
+        });
+    }
 }
