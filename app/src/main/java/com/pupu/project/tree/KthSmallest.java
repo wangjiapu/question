@@ -1,5 +1,7 @@
 package com.pupu.project.tree;
 
+import java.util.Random;
+
 public class KthSmallest {
 
     int res = 0;
@@ -44,7 +46,8 @@ public class KthSmallest {
      * @return
      */
     private int randInt(int min, int max) {
-        return (int) min + (int) (Math.random() * (max - min));
+        // return (int) min + (int) (Math.random() * (max - min));
+        return min + new Random().nextInt(max - min);
     }
 
     private void swap(int a, int b) {

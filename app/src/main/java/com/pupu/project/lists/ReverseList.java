@@ -33,6 +33,23 @@ public class ReverseList {
         return last;
     }
 
+    /**
+     * 头插法 翻转链表
+     * @param node
+     * @return
+     */
+    public ListNode reverseList3(ListNode node){
+        ListNode temp=new ListNode();
+        ListNode next=null;
+        if (node!=null){
+            next=node.next;
+            node.next=temp.next;
+            temp.next=node;
+            node=next;
+        }
+        return temp.next;
+    }
+
     ListNode suffix = null;
 
     /**
