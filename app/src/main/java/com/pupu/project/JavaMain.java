@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 import com.pupu.project.hard.MinWindow;
 import com.pupu.project.hard.SplitArray;
+import com.pupu.project.lists.MaxSum;
 import com.pupu.project.search.BinarySearch;
 import com.pupu.project.solutions.IntToRoman;
 import com.pupu.project.solutions.RemoveDuplicates;
@@ -45,7 +46,7 @@ public class JavaMain {
 //        new RemoveDuplicates().removeDuplicates(nums);
 //        String res = toString(nums);
 //        System.out.println(res);
-        String s=toString(new SplitArray().splitArray(initList(),2));
+        String s=toString(new MaxSum().findMaxPrice(initList()));
         System.out.println(s);
     }
 
@@ -117,6 +118,7 @@ public class JavaMain {
         //return new int[]{1,1,1};
         //return new int[]{1, 3, 5, 6};
         //return new int[]{1,1,2};
-        return new int[]{7,2,5,10,8};
+//        return new int[]{7,2,5,10,8};
+        return new int[]{7,1,5,3,6,4};
     }
 }
