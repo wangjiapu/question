@@ -46,4 +46,42 @@ public class TopKFrequent {
         }
         return res;
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public int[] topKFrequent2(int[] nums, int k) {
+        if (nums.length == 0 || nums.length < k) {
+            return new int[]{};
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
+
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer t0, Integer t1) {
+                return map.get(t0) - map.get(t1);
+            }
+        });
+
+        for (int key : map.keySet()) {
+            if (priorityQueue.size() < k) {
+                priorityQueue.add(key);
+            } else if (map.get(key) > map.get(priorityQueue.peek())) {
+                priorityQueue.remove();
+                priorityQueue.add(key);
+            }
+        }
+
+        int[] res = new int[k];
+        for (k = k - 1; k >= 0; k--) {
+            res[k] = priorityQueue.remove();
+        }
+        return res;
+
+    }
 }
